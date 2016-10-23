@@ -45,7 +45,13 @@ class CommentsController < ApplicationController
     end
 
     # Only allow a trusted parameter "white list" through.
+    # def comment_params
+    #   params.require(:comment).permit(:info, :post_id)
+    # end
+
     def comment_params
-      params.require(:comment).permit(:info, :post_id)
+      res = ActiveModelSerializers::Deserialization.jsonapi_parse(params)
+      # res[:publisher_type] = res[:publisher_type].singularize.capitalize
+      res
     end
 end
