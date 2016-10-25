@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :update, :destroy]
-
+  skip_before_filter :authenticate_user!
   # GET /comments
   def index
     @comments = Comment.all

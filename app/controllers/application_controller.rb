@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
 
   	# Enter the normal Devise authentication path,
   	# using the token authenticated user if available
-  	before_filter :authenticate_user!
+  	before_filter :authenticate_user!, except: :posts
 
   	private
 
